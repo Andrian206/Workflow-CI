@@ -8,13 +8,15 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error, mean_absolute_percentage_error
 import numpy as np
 
-try:
-    dagshub.init(repo_owner='Andrian206', repo_name='Eksperimen_SML_Rio-Andika-Andriansyah', mlflow=True)
-    print("Dagshub initialized")
-except Exception as e:
-    print(f"Dagshub init error: {e}")
+if not os.getenv("CI"):
+    try:
+        import dagshub
+        dagshub.init(repo_owner='Andrian206', repo_name='Eksperimen_SML_Rio-Andika-Andriansyah', mlflow=True)
+        print("Dagshub initialized")
+    except Exception as e:
+        print(f"Dagshub init error: {e}")
 
-mlflow.set_experiment("Student_Performance_Base_Model")
+# mlflow.set_experiment("Student_Performance_Base_Model")
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 dataset_dir = os.path.join(current_dir, "student_performance_preprocessing")
