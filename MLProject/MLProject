@@ -1,4 +1,4 @@
-name: Wine_Quality_Retraining
+name: Student_Performance_Retraining
 
 conda_env: conda.yaml
 
