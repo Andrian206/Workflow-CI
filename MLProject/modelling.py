@@ -95,9 +95,12 @@ with mlflow.start_run(run_name="LinearRegression_ManualLogging"):
     # Save Model
     # ======================================
 
+    input_contoh = X_train.head(5) 
+
     mlflow.sklearn.log_model(
         sk_model=lr_model,
-        artifact_path="model"
+        artifact_path="model",
+        input_example=input_contoh 
     )
 
     # ======================================
